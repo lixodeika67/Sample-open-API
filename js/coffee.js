@@ -1,3 +1,5 @@
+const unwantedItems = ["Svart Te", "Islatte", "Islatte Mocha", "Frapino Caramel", "Frapino Mocka", "Apelsinjuice", "Frozen Lemonade", "Lemonad"];
+
 function fetchCoffeeData(url, container) {
     fetch(url)
         .then(response => {
@@ -9,7 +11,7 @@ function fetchCoffeeData(url, container) {
         })
         .then(data => {
             container.innerHTML = '';
-            data.forEach(drink => {
+            data.filter(drink => !unwantedItems.includes(drink.title)).forEach(drink => {
                 let drinkElt = document.createElement("div");
                 drinkElt.className = 'drink';
 
