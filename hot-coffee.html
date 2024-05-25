@@ -9,16 +9,18 @@
 <body>
     <header>
         <nav>
-                <a href="index.html">Back</a>
+            <a href="index.html">Home</a>
+            <a href="iced-coffee.html">Iced Coffee</a>
         </nav>
         <h1>Hot Coffee</h1>
     </header>
     <section id="coffee-section">
-        <div id="coffee-container"></div>
+        <div id="coffee-titles"></div>
+        <div id="coffee-details"></div>
     </section>
     <script src="./js/index.js"></script>
     <script>
-        fetchAndDisplayCoffeeData('https://api.sampleapis.com/coffee/hot', document.getElementById('coffee-container'));
+        fetchAndDisplayCoffeeTitles('https://api.sampleapis.com/coffee/hot', document.getElementById('coffee-titles'));
     </script>
 </body>
 </html>

@@ -18,20 +18,14 @@ header {
     position: fixed;
 }
 
-header nav ul {
-    list-style: none;
-    padding: 0;
+header nav {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-header nav ul li {
-    display: inline;
-}
-
-header nav ul li a {
-    color: white;
+header nav a {
+    color: white; 
     text-decoration: none;
     font-weight: bold;
     padding: 0.5em 1em;
@@ -39,7 +33,7 @@ header nav ul li a {
     transition: background-color 0.3s;
 }
 
-header nav ul li a:hover {
+header nav a:hover {
     background-color: #8b5e5e;
 }
 
@@ -58,7 +52,6 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: min-content;
 }
 
 #main-content {
@@ -75,6 +68,7 @@ h1 {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .coffee-section:hover {
     transform: translateY(-10px);
@@ -98,26 +92,37 @@ h1 {
 }
 
 #coffee-section {
-   
     width: 90%;
     max-width: 1200px;
     margin: 2em 0;
 }
 
-#coffee-container {
-    margin-top: 150px; 
+#coffee-titles {
+    margin-top: 150px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
     gap: 10px;
 }
 
-.drink {
-    background-color: rgb(135, 136, 132);
+.drink-title {
+    background-color: #c5c3c3;
     border-radius: 0.8em;
     padding: 0.5em;
     text-align: center;
+    font-size: 1.2em;
+    color: #444;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
-
+.drink-title:hover {
+    background-color: #8b5e5e;
+    color: white;
+}
+.drink-title.pressed {
+    background-color: #857e7f;
+    color: white;
+}
 .drink img {
     width: 250px;
     height: 250px;
@@ -128,12 +133,12 @@ h1 {
 .drink h2 {
     font-size: 1.2em;
     margin: 0.5em 0;
-    color: #fff;
+    color: #444;
 }
 
 .drink p {
     font-size: 1em;
-    color: #fff;
+    color: #444;
 }
 
 .drink ul {
@@ -143,5 +148,12 @@ h1 {
 
 .drink ul li {
     font-size: 0.9em;
-    color: #fff;
+    color: #444;
+}
+#coffee-details {
+    margin-top: 20px;
+    text-align: center;
+    
+    padding: 20px;
+   
 }

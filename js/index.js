@@ -1,4 +1,3 @@
-// remove items that do not consider hot drinks from API link
 const unwantedItems = ["Svart Te", "Islatte", "Islatte Mocha", "Frapino Caramel", "Frapino Mocka", "Apelsinjuice", "Frozen Lemonade", "Lemonad"];
 
 async function fetchData(url) {
@@ -8,13 +7,28 @@ async function fetchData(url) {
     } else {
         throw new Error("Failed to fetch data");
     }
+}
 
-}// process and filter the fetched data 
 function processCoffeeData(data) {
     return data.filter(drink => !unwantedItems.includes(drink.title));
 }
-// creating every drink element
-function createDrinkElement(drink) {
+
+function createTitleElement(drink, detailsContainer) {
+    const titleElt = document.createElement("h2");
+    titleElt.innerText = drink.title;
+    titleElt.className = 'drink-title';
+    titleElt.addEventListener('click', () => {
+        
+        document.querySelectorAll('.drink-title').forEach(el => el.classList.remove('pressed'));
+        titleElt.classList.add('pressed');
+        displayCoffeeDetails(drink, detailsContainer);
+    });
+    return titleElt;
+}
+
+function displayCoffeeDetails(drink, container) {
+    container.innerHTML = '';
+
     const drinkElt = document.createElement("div");
     drinkElt.className = 'drink';
 
@@ -39,21 +53,22 @@ function createDrinkElement(drink) {
     });
     drinkElt.appendChild(ingredientsList);
 
-    return drinkElt;
+    container.appendChild(drinkElt);
 }
 
-function renderCoffeeData(data, container) {
-    container.innerHTML = '';
+function renderCoffeeTitles(data, titlesContainer, detailsContainer) {
+    titlesContainer.innerHTML = '';
     data.forEach(drink => {
-        const drinkElt = createDrinkElement(drink);
-        container.appendChild(drinkElt);
+        const titleElt = createTitleElement(drink, detailsContainer);
+        titlesContainer.appendChild(titleElt);
     });
 }
 
-function fetchAndDisplayCoffeeData(url, container) {
+function fetchAndDisplayCoffeeTitles(url, titlesContainer) {
+    const detailsContainer = document.getElementById('coffee-details');
     fetchData(url)
         .then(data => processCoffeeData(data))
-        .then(filteredData => renderCoffeeData(filteredData, container))
+        .then(filteredData => renderCoffeeTitles(filteredData, titlesContainer, detailsContainer))
         .catch(error => {
             console.error("Error fetching data: ", error.message);
         });
