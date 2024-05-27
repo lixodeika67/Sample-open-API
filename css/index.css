@@ -95,6 +95,7 @@ h1 {
     width: 90%;
     max-width: 1200px;
     margin: 2em 0;
+    margin-top: 100px; 
 }
 
 #coffee-titles {
@@ -119,10 +120,7 @@ h1 {
     background-color: #8b5e5e;
     color: white;
 }
-.drink-title.pressed {
-    background-color: #857e7f;
-    color: white;
-}
+
 .drink img {
     width: 250px;
     height: 250px;
@@ -153,7 +151,89 @@ h1 {
 #coffee-details {
     margin-top: 20px;
     text-align: center;
-    
     padding: 20px;
    
+}
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    background-color: #6b4f4f;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #8b5e5e;
+}
+/* Media Queries */
+
+/* Tablets and below */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+    }
+    .under-header {
+        font-size: 24px;
+    }
+    #main-content {
+        flex-direction: column;
+        margin-top: 200px;
+    }
+    .coffee-section img {
+        width: 250px;
+        height: 250px;
+    }
+    #coffee-section {
+        margin-top: 150px; 
+    }
+    #coffee-titles {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    header nav {
+        flex-direction: column;
+    }
+
+    header nav a {
+        margin: 5px 0;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .under-header {
+        font-size: 20px;
+    }
+
+    .coffee-section img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .coffee-section h2 {
+        font-size: 20px;
+    }
+    #coffee-section {
+        margin-top: 150px; 
+    }
+    .drink img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .drink h2 {
+        font-size: 1em;
+    }
+
+    .drink-title {
+        font-size: 1em;
+    }
 }

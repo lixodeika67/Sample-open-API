@@ -13,21 +13,21 @@ function processCoffeeData(data) {
     return data.filter(drink => !unwantedItems.includes(drink.title));
 }
 
-function createTitleElement(drink, detailsContainer) {
+function createTitleElement(drink, titlesContainer, detailsContainer) {
     const titleElt = document.createElement("h2");
     titleElt.innerText = drink.title;
     titleElt.className = 'drink-title';
     titleElt.addEventListener('click', () => {
-        
         document.querySelectorAll('.drink-title').forEach(el => el.classList.remove('pressed'));
         titleElt.classList.add('pressed');
-        displayCoffeeDetails(drink, detailsContainer);
+        displayCoffeeDetails(drink, detailsContainer, titlesContainer, titleElt);
     });
     return titleElt;
 }
 
-function displayCoffeeDetails(drink, container) {
-    container.innerHTML = '';
+function displayCoffeeDetails(drink, detailsContainer, titlesContainer, titleElt) {
+    titlesContainer.style.display = 'none';
+    detailsContainer.innerHTML = ''; 
 
     const drinkElt = document.createElement("div");
     drinkElt.className = 'drink';
@@ -53,13 +53,22 @@ function displayCoffeeDetails(drink, container) {
     });
     drinkElt.appendChild(ingredientsList);
 
-    container.appendChild(drinkElt);
+    const backButton = document.createElement("button");
+    backButton.innerText = "Back";
+    backButton.addEventListener('click', () => {
+        detailsContainer.innerHTML = '';
+        titlesContainer.style.display = 'grid';
+        titleElt.classList.remove('pressed'); 
+    });
+    drinkElt.appendChild(backButton);
+
+    detailsContainer.appendChild(drinkElt);
 }
 
 function renderCoffeeTitles(data, titlesContainer, detailsContainer) {
     titlesContainer.innerHTML = '';
     data.forEach(drink => {
-        const titleElt = createTitleElement(drink, detailsContainer);
+        const titleElt = createTitleElement(drink, titlesContainer, detailsContainer);
         titlesContainer.appendChild(titleElt);
     });
 }
