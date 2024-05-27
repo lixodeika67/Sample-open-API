@@ -1,12 +1,19 @@
 # Sample-open-API
 ---------|||------------
+
 Final project
+
 ---------|||------------
+
 Fetched from the sourses:
 https://api.sampleapis.com/coffee/hot and https://api.sampleapis.com/coffee/iced
+
 ---------|||------------
-How to use
+
+How to use?
+
 Download the folder and run on your local computer
+
 ---------|||------------
 ![main-page](images/image-1.png)
 ![hot-coffee-page](images/image-2.png)
